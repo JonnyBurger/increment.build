@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /$
+Allow: favicon.png
+Allow: logo.png
+Allow: index.html
+Disallow: /
