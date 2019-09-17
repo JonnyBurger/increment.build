@@ -19,13 +19,13 @@ export default async (): Promise<Database> => {
 			useUnifiedTopology: true
 		});
 		_client
-			.db('incrementnumber')
+			.db('incrementbuild')
 			.collection<Channel>('channel')
 			.createIndex({
 				identifier: 1
 			});
 	}
 	return {
-		channel: _client.db('incrementnumber').collection<Channel>('channel')
+		channel: _client.db('incrementbuild').collection<Channel>('channel')
 	};
 };
