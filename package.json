@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "eslint --cache 'src/*'",
-    "build": "tsc"
+    "build": "tsc",
+    "start": "node dist"
   },
   "repository": {
     "type": "git",
