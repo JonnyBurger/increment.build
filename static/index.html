@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Incrementing Build Numbers as a service - increment.build</title>
+    <link href="https://fonts.googleapis.com/css?family=Hind+Siliguri:400,600&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="./favicon.png">
+    <style>
+        header {
+            background: linear-gradient(45deg,#fda085,  #f6d365);
+            box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3)
+        }
+        body, html {
+            margin: 0;
+            font-family: 'Hind Siliguri';
+
+        }
+        * {
+            box-sizing: border-box;
+        }
+        .content {
+            max-width: 900px;
+            padding-left: 24px;
+            padding-right: 24px;
+            margin: auto;
+        }
+        h1 {
+            line-height: 1.2;
+            font-size: 3em;
+            margin-left: -3px;
+            color: white;
+            text-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+        }
+        .claim {
+            color: rgb(71, 37, 5);
+            max-width: 450px;
+            font-weight: 600;
+        }
+        #logo {
+            height: 65px; 
+            margin-left: -10px;
+        }
+        .terminal {
+            border: 1px solid rgba(0, 0, 0, 0.4);
+            padding: 16px 16px;
+            border-radius: 8px;
+            font-family: monospace;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="content">
+            <div style="height: 45px;"></div>
+            <img id="logo" src="./logo.png" alt="increment.build Logo">
+            <div style="height: 50px;"></div>
+            <h1><span style="color: rgb(71, 37, 5)">Incrementing build numbers,</span><br/>as a service.</h1>
+            <div class="claim">
+                increment.build is the easiest way to automatically bump the build number of your product – no sign up required and completely free!
+            </div>
+        </div>
+        <div style="height: 100px;"></div>
+    </header>
+    <div>
+        <div style="height: 40px;"></div>
+        <div class="content">
+            <h2>How it works</h2>
+            <p>Simply make a request to <code>increment.build/</code> followed by an identifier of your choice. It will return <code>1</code> and increment that number every subsequent request.</p>
+            <div class="terminal">
+                $ curl https://increment.build/my-awesome-app<br>
+                1 <br>
+                $ curl https://increment.build/my-awesome-app<br>
+                2 <br>
+                $ curl https://increment.build/my-awesome-app<br>
+                3 <br>
+            </div>
+            <p>Switch to a different identifier to get a new counter starting from 0.</p>
+            <div class="terminal">
+                $ curl https://increment.build/my-awesome-app<br>
+                4 <br>
+                $ curl https://increment.build/my-fancy-app<br>
+                1 <br>
+            </div>
+            <p>Save the result into an environment variable and use it to build your product.</p>
+            <div class="terminal">
+                $ export BUILD = $(curl https://increment.build/my-fancy-app) <br>
+                $ echo $BUILD <br>
+                2
+            </div>
+            <h2>Why do I need this?</h2>
+            <ul>
+                <li>If you give every build that you make it's own build number, you can easily figure out which build caused trouble if problems arise.</li>
+                <li>Automatically incrementing the build number requires you to first figure out what is the highest build number out there, which might not be trivial.</li>
+                <li>If you are an iOS or Android developer, you are required to increase the build number for each binary that you upload. If you forget it, the binary will be rejected and you will have to compile and upload again.</li>
+            </ul>
+            <h2>Pricing</h2>
+            <p>Free, forever!</p>
+            <p>Because you have better to do than manually increment by one. Because you don't deserve to lose time when you forget to. Because all of this should be much easier!</p>
+            <p>This service is brought to you by <a href="https://jonny.io">Jonny Burger</a>. If you like it and would like to support it, check out my product <a href="https://anysticker.app">AnySticker</a> instead! With it, you can create your own WhatsApp and Instagram stickers for your brand and publish them easy, fast and cheap.</p>
+            <h2>FAQ</h2>
+            <ul>
+                <li>
+                    <strong>How do I increment the build number of an Xcode project?</strong><br>
+                    Navigate to the directory of your Info.plist file and then execute
+                    <div class="terminal">
+                            /usr/libexec/PlistBuddy -c "Set :CFBundleVersion $(curl https://increment.build/your-app-name)" Info.plist
+                    </div>
+                </li>
+                <li>
+                    <strong>How do I increment the version code of an Android project?</strong><br>
+                    In your <code>build.gradle</code>, make the versionCode variable: <br>
+                    <code>
+                            versionCode project.hasProperty('versionCode') ? project.property('versionCode') as int : 1
+                    </code><br>
+                    then pass the version code like this:
+                    <div class="terminal">
+                            ./gradlew assembleRelease -PversionCode=$(curl https://increment.build/my-awesome-app)
+                    </div>
+                </li>
+                <li>
+                    <strong>My current build number is already at 2498. How can I make increment.build start from this number?</strong>
+                    <br>
+                    There is another endpoint for this. Simply append <code>/set/{your_number}</code> and your counter will jump to this number.
+                    <div class="terminal">
+                        https://increment.build/my-awesome-app/set/2498
+                    </div>
+                </li>
+                <li>
+                    <strong>There is no authentication! How do I prevent others from incrementing my build number?</strong><br>
+                    Just use an identifier that is really hard to guess! What about <a id="random" target="_blank">increment.build/e447dacc-8323-4e29-aeeb-4bbbbf9b2628</a>? No one will come up with that.</a>
+                </li>
+                <li>
+                    <strong>I incremented by accident. Can I go back?</strong><br>
+                    You cannot decrease the counter. But no worries! Just switch to a different identifier and you'll get a fresh counter. Or just don't care, a skipped build number is not the end of the world.
+                </li>
+                <li>
+                    <strong>I don't trust you, you will one day serve me malicious code instead of build numbers!</strong><br>
+                    Good for you: Trust is good, control is better. You can add a check that the response that you get from increment.build is purely numeric.
+                    <div class="terminal">
+                        export BUILD = $(curl https://increment.build/my-awesome-app)<br>
+                        re='^[0-9]+$' <br>
+                            if ! [[ $BUILD =~ $re ]] ; then <br>
+                            echo "error: Not a number" >&2; exit 1 <br>
+                        fi
+                    </div>
+                    You may also host the service yourself and control it! Check out the <a href="https://github.com/JonnyBurger/increment.build">GitHub repo</a> here.
+                </li>
+            </ul>
+            <p></p>
+            <p>© 2019 Jonny Burger.
+                <br>
+                <a href="https://jonny.io">Website</a><br><a href="https://twitter.com/jnybgr">Twitter</a></p>
+            <div style="height: 100px;"></div>
+        </div>
+    </div>
+</body>
+<script>
+function generateRandomString() {
+    const charset = "abcdefghijklmnopqrstuvwxyz123456789";
+    const length = 16
+    let str = "";
+    for (let i = 0; i < length; i++) {
+        str += charset[Math.floor(charset.length * Math.random())]
+    }
+    return str
+}
+const randomUrl = `https://increment.build/${generateRandomString()}`
+document.querySelector("#random").textContent = randomUrl
+document.querySelector("#random").href =  randomUrl 
+</script>
+    
+</html>

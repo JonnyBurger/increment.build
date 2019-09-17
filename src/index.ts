@@ -3,6 +3,8 @@ import db from './db';
 
 const app = express();
 
+app.use(express.static('static'));
+
 app.get('/:identifier', async (request, response) => {
 	const {identifier} = request.params;
 	const connection = await db();
