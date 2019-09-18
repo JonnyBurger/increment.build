@@ -68,7 +68,7 @@ gradle(task: 'assemble', build_type: 'Release', properties: {
 
 ### Expo
 ```sh
-node -e "a=require('./app.json');a.expo.ios.buildNumber=String((curl https://increment.build/my-app-ios));a.expo.android.versionCode=(curl https://increment.build/my-app-android);require('fs').writeFileSync('app.json', JSON.stringify(a, null, 2))"
+node -e "a=require('./app.json');a.expo.ios.buildNumber=String($(curl https://increment.build/my-app-ios));a.expo.android.versionCode=$(curl https://increment.build/my-app-android);require('fs').writeFileSync('app.json', JSON.stringify(a, null, 2))"
 ```
 
 ## FAQ
