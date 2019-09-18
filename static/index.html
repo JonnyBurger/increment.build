@@ -74,6 +74,12 @@
         .vscodestring {
             color: #CF9177
         }
+        code {
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            padding: 3px;
+            border-radius: 3px;
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.1)
+        }
     </style>
 </head>
 <body>
@@ -93,26 +99,26 @@
         <div style="height: 40px;"></div>
         <div class="content">
             <h2>How it works</h2>
-            <p>Simply make a request to <code>increment.build/</code> followed by an identifier of your choice. It will return <code>1</code> and increment that number every subsequent request.</p>
+            <p>Simply make a request to <code>https://increment.build/</code> followed by an identifier of your choice. It will return <code>1</code> and increment that number every subsequent request.</p>
             <div class="terminal">
-                <span class="prompt">$ </span><span class="bin">curl</span> https://increment.build/my-awesome-app<br>
+                <span class="prompt">❯ </span><span class="bin">curl</span> https://increment.build/my-awesome-app<br>
                 1 <br>
-                <span class="prompt">$ </span><span class="bin">curl</span> https://increment.build/my-awesome-app<br>
+                <span class="prompt">❯ </span><span class="bin">curl</span> https://increment.build/my-awesome-app<br>
                 2 <br>
-                <span class="prompt">$ </span><span class="bin">curl</span> https://increment.build/my-awesome-app<br>
+                <span class="prompt">❯ </span><span class="bin">curl</span> https://increment.build/my-awesome-app<br>
                 3 <br>
             </div>
             <p>Switch to a different identifier to get a new counter starting from 0.</p>
             <div class="terminal">
-                <span class="prompt">$ </span><span class="bin">curl</span> https://increment.build/my-awesome-app<br>
+                <span class="prompt">❯ </span><span class="bin">curl</span> https://increment.build/my-awesome-app<br>
                 4 <br>
-                <span class="prompt">$ </span><span class="bin">curl</span> https://increment.build/my-fancy-app<br>
+                <span class="prompt">❯ </span><span class="bin">curl</span> https://increment.build/my-fancy-app<br>
                 1 <br>
             </div>
             <p>Save the result into an environment variable and use it to build your product.</p>
             <div class="terminal">
-                <span class="prompt">$ </span><span class="export">export</span> BUILD = $(curl https://increment.build/my-fancy-app) <br>
-                <span class="prompt">$ </span><span class="span bin">echo
+                <span class="prompt">❯ </span><span class="export">export</span> BUILD = $(curl https://increment.build/my-fancy-app) <br>
+                <span class="prompt">❯ </span><span class="span bin">echo
                 </span> $BUILD <br>
                 2
             </div>
@@ -120,11 +126,10 @@
             <ul>
                 <li>If you give every build that you make it's own build number, you can easily figure out which build caused trouble if problems arise.</li>
                 <li>Automatically incrementing the build number requires you to first figure out what is the highest build number out there, which might not be trivial.</li>
-                <li>If you are an iOS or Android developer, you are required to increase the build number for each binary that you upload. If you forget it, the binary will be rejected and you will have to compile and upload again.</li>
+                <li>As an iOS or Android developer, you are required to increase the build number for each binary that you upload. If you forget it, the binary will be rejected and you will have to compile and upload again.</li>
             </ul>
             <h2>Pricing</h2>
             <p>Free, forever!</p>
-            <p>Because you have better to do than manually increment by one. Because you don't deserve to lose time when you forget to. Because all of this should be much easier!</p>
             <p>This service is brought to you by <a target="_blank" href="https://jonny.io">Jonny Burger</a>. If you like it and would like to support it, check out my product <a target="_blank" href="https://anysticker.app">AnySticker</a> instead! With it, you can create your own WhatsApp and Instagram stickers for your brand and publish them easy, fast and cheap.</p>
             <h2>FAQ</h2>
             <ul>
@@ -132,7 +137,7 @@
                     <strong>How do I increment the build number of an Xcode project?</strong><br>
                     Navigate to the directory where your Xcode project is in
                     <div class="terminal">
-                        <span class="bin">agvtool </span>new-version $(curl https://increment.build/my-awesome-app)
+                            <span class="prompt">❯ </span> <span class="bin">agvtool </span>new-version $(curl https://increment.build/my-awesome-app)
                     </div>
                 </li>
                 <li>
@@ -143,7 +148,7 @@
                     </code><br>
                     then pass the version code like this:
                     <div class="terminal">
-                            <span class="bin">./gradlew </span>assembleRelease -PversionCode=$(curl https://increment.build/my-awesome-app)
+                            <span class="prompt">❯ </span><span class="bin">./gradlew </span>assembleRelease -PversionCode=$(curl https://increment.build/my-awesome-app)
                     </div>
                 </li>
                 <li>
@@ -152,30 +157,37 @@
                     </strong>
                     This will increment both iOS build number and Android version code based on separate counters!
                     <div class="terminal">
-                            <span class="bin">node</span> -e <span class="export">"a=require('./app.json');a.expo.ios.buildNumber=String(<span class="prompt">$</span>(curl https://increment.build/my-app-ios));a.expo.android.versionCode=<span class="prompt">$</span>(curl https://increment.build/my-app-android);require('fs').writeFileSync('app.json', JSON.stringify(a, null, 2))"</span>
+                            <span class="prompt">❯ </span><span class="bin">node</span> -e <span class="export">"a=require('./app.json');a.expo.ios.buildNumber=String(<span class="prompt">$</span>(curl https://increment.build/my-app-ios));a.expo.android.versionCode=<span class="prompt">$</span>(curl https://increment.build/my-app-android);require('fs').writeFileSync('app.json', JSON.stringify(a, null, 2))"</span>
                     </div>
                 </li>
                 <li>
                     <strong>How do I increment the build number using Fastlane?</strong><br>
+                    For iOS projects:
                     <pre class="terminal">
 increment_build_number(
   xcodeproj: <span class="vscodestring">'./ios/MyAwesomeApp.xcodeproj'</span>,
-  build_number: sh(<span class="vscodestring">'curl -s https://increment.build/my-awesome-app'</span>)
+  build_number: sh(<span class="vscodestring">'curl -s https://increment.build/my-awesome-app-ios'</span>)
 )</pre>
+For Android projects:
+<pre class="terminal">
+gradle(task: <span class="vscodestring">'assemble'</span>, build_type: <span class="vscodestring">'Release'</span>, properties: {
+  versionCode: sh(<span class="vscodestring">'curl -s https://increment.build/my-awesome-app-android'</span>)
+})
+</pre>
                 </li>
                 <li>
                     <strong>My current build number is already at 2498. How can I make increment.build start from this number?</strong>
                     <br>
                     There is another endpoint for this. Simply append <code>/set/{your_number}</code> and your counter will jump to this number.
                     <div class="terminal">
-                        <span class="bin">curl </span>https://increment.build/my-awesome-app/set/2498
+                            <span class="prompt">❯ </span><span class="bin">curl </span>https://increment.build/my-awesome-app/set/2498
                     </div>
                 </li>
                 <li>
                     <strong>My cURL also prints the progress, not just the build number!</strong> <br>
                     Try to add the -s flag to prevent progress being printed:
                     <div class="terminal">
-                        <span class="bin">curl</span> -s https://increment.build/
+                            <span class="prompt">❯ </span><span class="bin">curl</span> -s https://increment.build/
                     </div>
                 </li>
                 <li>
@@ -205,7 +217,7 @@ re='^[0-9]+$'
             <p></p>
             <p>© <script>document.write(new Date().getFullYear() + 1)</script> Jonny Burger. Yes I live in the future 😎🤖
                 <br>
-                <a href="https://jonny.io">Website</a><br><a href="https://twitter.com/jnybgr">Twitter</a></p>
+                <a target="_blank" href="https://jonny.io">Website</a><br><a target="_blank" href="https://twitter.com/jnybgr">Twitter</a></p>
             <div style="height: 100px;"></div>
         </div>
     </div>
