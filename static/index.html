@@ -68,6 +68,9 @@
             color: #5099B9;
             user-select: none;
         }
+        .interpolationsign {
+            color: #5099B9;
+        }
         .export {
             color: #E5C07B;
         }
@@ -137,7 +140,7 @@
             </ul>
             <h2>Pricing</h2>
             <p>$0/month forever!</p>
-            <p>This service is brought to your for free by <a href="https://jonny.io">Jonny Burger</a>. As a return, let me advertise two things really quick! 😊</p>
+            <p>This service is brought to you for free by <a href="https://jonny.io">Jonny Burger</a>. As a return, let me advertise two things really quick! 😊</p>
             <ul>
                 <li>Check out my app <a target="_blank" href="https://anysticker.app">AnySticker</a>, which allows you to create and publish WhatsApp and Instagram stickers for your brand!</li>
                 <li>Hire me and and a team of experts to build your MVP in 100 days: We are <a target="_blank" href="https://axelra.com">Axelra</a>.</li>
@@ -149,7 +152,7 @@
                     Move into the folder where your Info.plist is and execute this command:
                     <div class="terminal">
 
-                            <span class="prompt">❯ </span> <span class="bin">/usr/libexec/PlistBuddy</span> -c <span class="export">"Set :CFBundleVersion <span class="prompt">$</span>(curl https://increment.build/my-awesome-app)"</span> Info.plist
+                            <span class="prompt">❯ </span> <span class="bin">/usr/libexec/PlistBuddy</span> -c <span class="export">"Set :CFBundleVersion <span class="interpolationsign">$</span>(curl https://increment.build/my-awesome-app)"</span> Info.plist
                     </div>
                 </li>
                 <li>
@@ -169,7 +172,7 @@
                     </strong>
                     This will increment both iOS build number and Android version code based on separate counters!
                     <div class="terminal">
-                            <span class="prompt">❯ </span><span class="bin">node</span> -e <span class="export">"a=require('./app.json');a.expo.ios.buildNumber=String(<span class="prompt">$</span>(curl https://increment.build/my-app-ios));a.expo.android.versionCode=<span class="prompt">$</span>(curl https://increment.build/my-app-android);require('fs').writeFileSync('app.json', JSON.stringify(a, null, 2))"</span>
+                            <span class="prompt">❯ </span><span class="bin">node</span> -e <span class="export">"a=require('./app.json');a.expo.ios.buildNumber=String(<span class="interpolationsign">$</span>(curl https://increment.build/my-app-ios));a.expo.android.versionCode=<span class="interpolationsign">$</span>(curl https://increment.build/my-app-android);require('fs').writeFileSync('app.json', JSON.stringify(a, null, 2))"</span>
                     </div>
                 </li>
                 <li>
