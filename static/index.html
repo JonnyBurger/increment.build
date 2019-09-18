@@ -133,6 +133,7 @@
                 <li>If you give every build that you make it's own build number, you can easily figure out which build caused trouble if problems arise.</li>
                 <li>Automatically incrementing the build number requires you to first figure out what is the highest build number out there, which might not be trivial.</li>
                 <li>As an iOS or Android developer, you are required to increase the build number for each binary that you upload. If you forget it, the binary will be rejected and you will have to compile and upload again.</li>
+                <li>You want to use continuous integration and don't want to commit version code increases.</li>
             </ul>
             <h2>Pricing</h2>
             <p>$0/month forever!</p>
@@ -145,9 +146,10 @@
             <ul>
                 <li>
                     <strong>How do I increment the build number of an Xcode project?</strong><br>
-                    Navigate to the directory where your Xcode project is in
+                    Move into the folder where your Info.plist is and execute this command:
                     <div class="terminal">
-                            <span class="prompt">❯ </span> <span class="bin">agvtool </span>new-version $(curl https://increment.build/my-awesome-app)
+
+                            <span class="prompt">❯ </span> <span class="bin">/usr/libexec/PlistBuddy</span> -c <span class="export">"Set :CFBundleVersion <span class="prompt">$</span>(curl https://increment.build/my-awesome-app)"</span> Info.plist
                     </div>
                 </li>
                 <li>
