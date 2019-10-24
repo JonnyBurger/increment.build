@@ -8,7 +8,7 @@ app.use(express.static('static'));
 app.use(cors());
 
 app.get('/:identifier/get', async (request, response) => {
-	const identifier = request.params;
+	const {identifier} = request.params;
 	const connection = await db();
 	const channel = await connection.channel.findOne({
 		identifier
