@@ -5,6 +5,19 @@ const app = express();
 
 app.use(express.static('static'));
 
+app.get('/:identifier/get', async (request, response) => {
+	const identifier = request.params;
+	const connection = await db();
+	const channel = await connection.channel.findOne({
+		identifier
+	});
+	if (!channel) {
+		response.end('1');
+		return;
+	}
+	response.end(String(channel.value));
+});
+
 app.get('/:identifier', async (request, response) => {
 	const {identifier} = request.params;
 	const connection = await db();
