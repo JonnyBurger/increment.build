@@ -25,9 +25,11 @@
   "homepage": "https://github.com/JonnyBurger/increment.build#readme",
   "dependencies": {
     "@jonny/eslint-config": "^2.1.6",
+    "@types/cors": "^2.8.6",
     "@types/express": "^4.17.1",
     "@types/mongodb": "^3.3.1",
     "@types/node": "^12.7.5",
+    "cors": "^2.8.5",
     "eslint": "^6.4.0",
     "express": "^4.17.1",
     "mongodb": "^3.3.2",

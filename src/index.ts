@@ -1,9 +1,11 @@
 import express from 'express';
+import cors from 'cors';
 import db from './db';
 
 const app = express();
 
 app.use(express.static('static'));
+app.use(cors());
 
 app.get('/:identifier/get', async (request, response) => {
 	const identifier = request.params;
