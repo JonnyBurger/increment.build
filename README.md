@@ -87,6 +87,14 @@ You cannot decrease the counter. I recommend that you just don't care - skipping
 - **I don't trust you, you will one day serve me malicious code instead of build numbers!** <br>
 Good for you, the saying is that trust is good, control is better. You can add a check that the response that you get from increment.build is purely numeric.
 
+```sh
+export BUILD = $(curl https://increment.build/my-awesome-app)
+re='^[0-9]+$'
+    if ! [[ $BUILD =~ $re ]] ; then
+    echo "error: Not a number" >&2; exit 1
+fi
+```
+
 - **My current build number is already at 2498. How can I make increment.build start from this number?**<br>
 There is another endpoint for this. Simply append `/set/{your_number}` and your counter will jump to this number.
 ```sh
