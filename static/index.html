@@ -200,6 +200,14 @@ gradle(task: <span class="vscodestring">'assemble'</span>, build_type: <span cla
                     </div>
                 </li>
                 <li>
+                    <strong>How can I get the current build number without incrementing it?</strong>
+                    <br>
+                    You can simply append <code>/get</code> to get the current build number without incrementing it. Useful for building counters!
+                    <div class="terminal">
+                            <span class="prompt">❯ </span><span class="bin">curl </span>https://increment.build/my-awesome-app/get
+                    </div>
+                </li>
+                <li>
                     <strong>My cURL also prints the progress, not just the build number!</strong> <br>
                     Try to add the -s flag to prevent progress being printed:
                     <div class="terminal">
