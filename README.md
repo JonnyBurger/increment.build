@@ -21,6 +21,9 @@ increment.build is a free web service which keeps track of your build numbers an
 1267
 ❯ curl https://increment.build/my-other-awesome-app
 1268
+# Get build without incrementing
+❯ curl https://increment.build/my-other-awesome-app/get
+1268
 ```
 
 ## Why?
