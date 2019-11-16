@@ -32,7 +32,7 @@
     "cors": "^2.8.5",
     "eslint": "^6.4.0",
     "express": "^4.17.1",
-    "mongodb": "^3.3.2",
+    "mongodb": "^3.3.4",
     "typescript": "^3.7.2"
   }
 }
