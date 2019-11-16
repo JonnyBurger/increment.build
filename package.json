@@ -4,7 +4,7 @@
   "description": "Code of increment.build",
   "main": "index.js",
   "scripts": {
-    "test": "eslint --cache 'src/*'",
+    "test": "tsc && eslint --cache 'src/*.ts'",
     "build": "tsc",
     "start": "node dist"
   },
