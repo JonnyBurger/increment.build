@@ -30,7 +30,7 @@
     "@types/mongodb": "^3.3.11",
     "@types/node": "^12.12.12",
     "cors": "^2.8.5",
-    "eslint": "^6.6.0",
+    "eslint": "^6.7.1",
     "express": "^4.17.1",
     "mongodb": "^3.3.4",
     "typescript": "^3.7.2"
