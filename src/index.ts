@@ -14,10 +14,10 @@ app.get('/:identifier/get', async (request, response) => {
 		identifier
 	});
 	if (!channel) {
-		response.end('1');
 		return;
 	}
 	response.end(String(channel.value));
+    response.end('0');
 });
 
 app.get('/:identifier', async (request, response) => {
