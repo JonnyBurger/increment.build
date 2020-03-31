@@ -1,0 +1,17 @@
+version: 1
+update_configs:
+  - package_manager: javascript
+    directory: '/'
+    update_schedule: 'live'
+    automerged_updates:
+      - match:
+          dependency_type: 'all'
+          update_type: 'all'
+          dependency_name: '@types/*'
+      - match:
+          dependency_name: 'prettier'
+      - match:
+          dependency_name: '@jonny/eslint-config'
+      - match:
+          dependency_name: 'mongodb-memory-server'
+    version_requirement_updates: increase_versions
