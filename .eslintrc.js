@@ -1,3 +1,6 @@
 module.exports = {
-	extends: ['@jonny']
+	extends: ['@jonny'],
+	parserOptions: {
+		project: 'tsconfig.json',
+	},
 };
