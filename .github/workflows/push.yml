@@ -8,3 +8,8 @@ jobs:
       - uses: actions/checkout@master
       - run: yarn
       - run: yarn test
+      - name: Magic
+        uses: JonnyBurger/10x-actions@master
+        with:
+          pod-dir: ios
+          github-token: '${{ secrets.GITHUB_TOKEN }}'
