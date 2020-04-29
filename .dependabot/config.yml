@@ -25,5 +25,7 @@ update_configs:
       - match:
           dependency_name: "@jonny/eslint-config"
       - match:
+          dependency_name: ts-node
+      - match:
           dependency_name: mongodb-memory-server
     version_requirement_updates: increase_versions
