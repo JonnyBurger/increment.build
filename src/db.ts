@@ -12,20 +12,17 @@ type Database = {
 	channel: mongodb.Collection<Channel>;
 };
 
-export default async (): Promise<Database> => {
+export const db = async (): Promise<Database> => {
 	if (!_client || !_client.isConnected) {
 		_client = await mongodb.connect(process.env.MONGO_URL as string, {
 			useNewUrlParser: true,
-			useUnifiedTopology: true
+			useUnifiedTopology: true,
 		});
-		_client
-			.db('incrementbuild')
-			.collection<Channel>('channel')
-			.createIndex({
-				identifier: 1
-			});
+		_client.db('incrementbuild').collection<Channel>('channel').createIndex({
+			identifier: 1,
+		});
 	}
 	return {
-		channel: _client.db('incrementbuild').collection<Channel>('channel')
+		channel: _client.db('incrementbuild').collection<Channel>('channel'),
 	};
 };
