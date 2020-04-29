@@ -35,5 +35,8 @@
 		"mongodb": "^3.5.6",
 		"prettier": "^2.0.5",
 		"typescript": "^3.8.3"
+	},
+	"devDependencies": {
+		"prettier-plugin-organize-imports": "^1.0.3"
 	}
 }
