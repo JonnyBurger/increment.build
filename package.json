@@ -38,6 +38,7 @@
 		"uninstall": "0.0.0"
 	},
 	"devDependencies": {
+		"@jonny/prettier-plugin-organize-imports": "^1.0.5",
 		"prettier-plugin-organize-imports": "^1.0.3"
 	}
 }
