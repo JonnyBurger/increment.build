@@ -38,4 +38,6 @@ update_configs:
           dependency_name: react-native-device-info
       - match:
           dependency_name: react-native-redash
+      - match:
+          dependency_name: typescript
     version_requirement_updates: increase_versions
