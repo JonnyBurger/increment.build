@@ -5,7 +5,9 @@
 	"useTabs": true,
 	"overrides": [
 		{
-			"files": ["*.yml"],
+			"files": [
+				"*.yml"
+			],
 			"options": {
 				"singleQuote": false
 			}
