@@ -24,7 +24,7 @@
 	},
 	"homepage": "https://github.com/JonnyBurger/increment.build#readme",
 	"dependencies": {
-		"@jonny/eslint-config": "^2.1.145",
+		"@jonny/eslint-config": "^2.1.146",
 		"@types/cors": "^2.8.6",
 		"@types/express": "^4.17.6",
 		"@types/mongodb": "^3.5.7",
@@ -34,9 +34,11 @@
 		"express": "^4.17.1",
 		"mongodb": "^3.5.7",
 		"prettier": "^2.0.5",
-		"typescript": "^3.9.2"
+		"typescript": "^3.9.2",
+		"uninstall": "0.0.0"
 	},
 	"devDependencies": {
+		"@jonny/prettier-plugin-organize-imports": "^1.0.5",
 		"prettier-plugin-organize-imports": "^1.0.3"
 	}
 }
