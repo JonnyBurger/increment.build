@@ -27,7 +27,7 @@
 		"@jonny/eslint-config": "^2.1.145",
 		"@types/cors": "^2.8.6",
 		"@types/express": "^4.17.6",
-		"@types/mongodb": "^3.5.7",
+		"@types/mongodb": "^3.5.16",
 		"@types/node": "^14.0.1",
 		"cors": "^2.8.5",
 		"eslint": "^6.8.0",
