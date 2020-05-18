@@ -37,7 +37,5 @@
 		"typescript": "^3.9.2",
 		"uninstall": "0.0.0"
 	},
-	"devDependencies": {
-		"@jonny/prettier-plugin-organize-imports": "^1.0.5"
-	}
+	"devDependencies": {}
 }
