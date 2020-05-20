@@ -41,5 +41,7 @@ update_configs:
       - match:
           dependency_name: typescript
       - match:
+          dependency_name: date-fns
+      - match:
           dependency_name: ts-unused-exports
     version_requirement_updates: increase_versions
