@@ -34,7 +34,7 @@
 		"express": "^4.17.1",
 		"mongodb": "^3.5.7",
 		"prettier": "^2.0.5",
-		"typescript": "^3.9.2",
+		"typescript": "^3.9.5",
 		"uninstall": "0.0.0"
 	},
 	"devDependencies": {
