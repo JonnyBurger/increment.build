@@ -1,0 +1,29 @@
+version: "3.8"
+
+volumes:
+  data:
+
+services:
+
+  increment.build:
+    image: increment.build:latest
+    container_name: increment.build
+    restart: on-failure
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - MONGO_URL="mongodb://mongo:27017"
+    ports:
+      - 8000:8000
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    restart: on-failure
+    expose:
+      - 27017
+    volumes:
+      - data:/data/db

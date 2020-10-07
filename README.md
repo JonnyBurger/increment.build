@@ -122,6 +122,12 @@ It can be deployed to Heroku with no additional configuration, just make sure yo
 
 Pull requests are welcome, especially about how to integrate with certain services.
 
+### Running using docker
+Clone the repo and use the `docker-compose.yml` to first build the docker image, and then run increment.build and a MongoDB using docker-compose.
+```sh
+docker-compose up -d
+```
+
 ## Credits
 
 This service is brought to you by [Jonny Burger](jonny.io) for free! As a return, let me advertise two things really quick! 😊
