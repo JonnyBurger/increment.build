@@ -3,6 +3,11 @@ update_configs:
   - package_manager: javascript
     directory: /
     update_schedule: live
+    ignored_updates:
+      - match:
+          dependency_name: metro-react-native-babel-preset
+      - match:
+          dependency_name: metro
     automerged_updates:
       - match:
           dependency_type: all
