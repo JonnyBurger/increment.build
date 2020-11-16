@@ -63,4 +63,6 @@ update_configs:
           dependency_name: ts-jest
       - match:
           dependency_name: jest
+      - match:
+          dependency_name: react-native-safe-area-context
     version_requirement_updates: increase_versions
