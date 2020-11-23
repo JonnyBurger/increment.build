@@ -32,6 +32,10 @@ update_configs:
       - match:
           dependency_name: ts-node
       - match:
+          dependency_name: mongodb
+      - match:
+          dependency_name: css-loader
+      - match:
           dependency_name: mongodb-memory-server
       - match:
           dependency_name: "@react-navigation/bottom-tabs"
@@ -64,5 +68,9 @@ update_configs:
       - match:
           dependency_name: jest
       - match:
+          dependency_name: babel-preset-react
+      - match:
           dependency_name: react-native-safe-area-context
+      - match:
+          dependency_name: eslint
     version_requirement_updates: increase_versions
