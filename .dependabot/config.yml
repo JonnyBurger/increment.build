@@ -73,4 +73,8 @@ update_configs:
           dependency_name: react-native-safe-area-context
       - match:
           dependency_name: eslint
+      - match:
+          dependency_name: ts-node-dev
+      - match:
+          dependency_name: ms
     version_requirement_updates: increase_versions
