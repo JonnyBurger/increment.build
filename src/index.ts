@@ -17,6 +17,7 @@ app.get('/:identifier/get', async (request, response) => {
 		response.end('0');
 		return;
 	}
+
 	response.end(String(channel.value));
 });
 
@@ -35,6 +36,7 @@ app.get('/:identifier', async (request, response) => {
 		response.end('1');
 		return;
 	}
+
 	await connection.channel.updateOne(
 		{
 			identifier,
@@ -51,7 +53,7 @@ app.get('/:identifier', async (request, response) => {
 
 app.get('/:identifier/set/:numberstr', async (request, response) => {
 	const {identifier, numberstr} = request.params;
-	const num = parseInt(numberstr);
+	const num = parseInt(numberstr, 10);
 	if (typeof num !== 'number' || isNaN(num)) {
 		response
 			.status(400)
@@ -60,6 +62,7 @@ app.get('/:identifier/set/:numberstr', async (request, response) => {
 			);
 		return;
 	}
+
 	const connection = await db();
 	const channel = await connection.channel.findOne({
 		identifier,
@@ -72,12 +75,14 @@ app.get('/:identifier/set/:numberstr', async (request, response) => {
 		});
 		return response.end(String(num));
 	}
+
 	if (num <= channel.value) {
 		response
 			.status(400)
 			.end('You cannot decrease the number. Use another identifier instead.');
 		return;
 	}
+
 	await connection.channel.updateOne(
 		{
 			identifier,

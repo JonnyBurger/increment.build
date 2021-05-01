@@ -22,6 +22,7 @@ export const db = async (): Promise<Database> => {
 			identifier: 1,
 		});
 	}
+
 	return {
 		channel: _client.db('incrementbuild').collection<Channel>('channel'),
 	};
