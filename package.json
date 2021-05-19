@@ -31,7 +31,7 @@
 		"@types/node": "^15.3.0",
 		"cors": "^2.8.5",
 		"express": "^4.17.1",
-		"mongodb": "^3.6.6"
+		"mongodb": "^3.6.7"
 	},
 	"devDependencies": {
 		"eslint": "^7.25.0",
