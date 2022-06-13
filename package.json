@@ -28,7 +28,7 @@
 		"@types/cors": "^2.8.10",
 		"@types/express": "^4.17.11",
 		"@types/mongodb": "^3.6.12",
-		"@types/node": "^15.3.0",
+		"@types/node": "^17.0.42",
 		"cors": "^2.8.5",
 		"express": "^4.17.1",
 		"mongodb": "^3.6.6"
