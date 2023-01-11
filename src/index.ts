@@ -54,7 +54,7 @@ app.get('/:identifier', async (request, response) => {
 app.get('/:identifier/set/:numberstr', async (request, response) => {
 	const {identifier, numberstr} = request.params;
 	const num = parseInt(numberstr, 10);
-	if (typeof num !== 'number' || isNaN(num)) {
+	if (typeof num !== 'number' || Number.isNaN(num) || !Number.isFinite(num)) {
 		response
 			.status(400)
 			.end(
@@ -97,7 +97,7 @@ app.get('/:identifier/set/:numberstr', async (request, response) => {
 	return response.end(String(num));
 });
 
-app.use(async (request, response) => {
+app.use((request, response) => {
 	response
 		.status(404)
 		.end(
